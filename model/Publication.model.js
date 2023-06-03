@@ -1,23 +1,27 @@
 const mongoose = require('mongoose');
 
+// Define the publication schema
 const publicationSchema = new mongoose.Schema({
-  description: {
-    type: String,
-    required: true,
-  },
-  img: {
-    title: String,
-    path: {
-      type: mongoose.Schema.Types.Buffer,
-      required: true,
-    },
-  },
-  dateTime: {
+  description: String,
+  date_publication: {
     type: Date,
-    required: true,
+    default: Date.now,
+  },
+  images: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Image',
+  },
+  projet: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Projet',
+  },
+  __v: {
+    type: Number,
+    default: 0,
   },
 });
 
-const Publication = mongoose.model('Publication', publicationSchema);
+// Create the Publication model
+const PublicationModel = mongoose.model('Publication', publicationSchema);
 
-module.exports = Publication;
+module.exports = PublicationModel;

@@ -16,6 +16,10 @@ const dateNaissanceSchema = new mongoose.Schema({
 });
 
 const clientSchema = new mongoose.Schema({
+  _id: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+  },
   nomComplet: {
     type: String,
     required: true,
@@ -51,6 +55,6 @@ const clientSchema = new mongoose.Schema({
   },
 });
 
-const Client = mongoose.model('Client', clientSchema);
+const ClientModel = mongoose.model('Client', clientSchema);
 
-module.exports = Client;
+module.exports = ClientModel;
